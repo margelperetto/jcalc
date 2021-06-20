@@ -45,7 +45,7 @@ public class JFCalc extends JFrame implements Display{
 	public JFCalc() {
 		signal.setFont(current.getFont());
 		setLayout(new MigLayout(new LC().fill().insetsAll("4").gridGap("2","2").wrapAfter(4)));
-		add(createDisplayPanel(), new CC().height("50::").grow().spanX().gapBottom("4"));
+		add(createDisplayPanel(), new CC().height("50::").grow().spanX(4).gapBottom("4"));
 		for (BtnConfig cfg : btnConfigs) {
 			add(createButton(cfg), new CC().grow().width("60::").height("50::"));
 		}
@@ -64,8 +64,8 @@ public class JFCalc extends JFrame implements Display{
 		panel.setOpaque(true);
 		panel.setBackground(Color.WHITE);
 		panel.setBorder(UIManager.getBorder("TextField.border"));
-		panel.add(current, new CC().width("0:100%:").grow());
-		panel.add(signal,  new CC().minWidth("12").grow().gapRight("2").wrap());
+		panel.add(current, new CC().minWidth("0" ).alignX("right").grow().spanX().split());
+		panel.add(signal,  new CC().minWidth("12").gapRight("2").wrap());
 		panel.add(display, new CC().minWidth("0" ).grow().spanX());
 		return panel;
 	}

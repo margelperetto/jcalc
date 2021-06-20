@@ -1,5 +1,5 @@
 # JCalc
-a simple calculator application made in java
+A simple calculator application built in Java
 
-![alt text](https://github.com/margelperetto/jcalc/blob/main/screenshot.jpg "ScreenShot Windows")
-![alt text](https://github.com/margelperetto/jcalc/blob/main/screenshot2.jpg "ScreenShot Linux")
+![alt text](https://github.com/margelperetto/jcalc/blob/main/screenshot_windows.jpg "ScreenShot Windows")
+![alt text](https://github.com/margelperetto/jcalc/blob/main/screenshot_linux.jpg "ScreenShot Linux")
