@@ -14,7 +14,7 @@ public class ActionNumber implements BiConsumer<JFCalc, BtnConfig>{
 		if(text.contains(".") && text.endsWith("0")) {
 			frame.setDisplayText(text);
 		} else {
-			frame.printResult(new BigDecimal(text));
+			frame.setDisplayValue(new BigDecimal(text));
 		}
 	}
 

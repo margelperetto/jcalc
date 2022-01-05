@@ -23,6 +23,7 @@ import br.com.margel.jcalc.business.CalcOp;
 import br.com.margel.jcalc.business.Display;
 import br.com.margel.jcalc.view.config.BtnConfig;
 import br.com.margel.jcalc.view.listeners.CalKeyListener;
+import br.com.margel.jcalc.view.utils.AppColors;
 import br.com.margel.jcalc.view.utils.ImageUtils;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
@@ -37,8 +38,8 @@ public class JFCalc extends JFrame implements Display{
 			dg("1"),  dg("2"), dg("3"), op(ADD),
 			sg("+/-"),dg("0"), cm(","), eq("=")
 	);
-	private JTextField current = createTextField("",  11f, Color.BLACK);
-	private JTextField display = createTextField("0", 22f, Color.BLUE);
+	private JTextField current = createTextField("",  11f, AppColors.SECONDARY_TEXT_COLOR);
+	private JTextField display = createTextField("0", 22f, AppColors.HIGHLIGHTED_TEXT_COLOR);
 	private JLabel signal =  new JLabel();
 	private Calc calc = new Calc(this);
 	
@@ -62,7 +63,7 @@ public class JFCalc extends JFrame implements Display{
 	private JPanel createDisplayPanel() {
 		JPanel panel = new JPanel(new MigLayout(new LC().gridGap("0","0").fill().insetsAll("2")));
 		panel.setOpaque(true);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(AppColors.BACKGROUND_COLOR);
 		panel.setBorder(UIManager.getBorder("TextField.border"));
 		panel.add(current, new CC().minWidth("0" ).alignX("right").grow().spanX().split());
 		panel.add(signal,  new CC().minWidth("12").gapRight("2").wrap());
@@ -71,7 +72,7 @@ public class JFCalc extends JFrame implements Display{
 	}
 	private JTextField createTextField(String text, float fs, Color fg) {
 		JTextField field = new JTextField(text);
-		field.setBorder(new LineBorder(Color.WHITE));
+		field.setBorder(new LineBorder(AppColors.BACKGROUND_COLOR));
 		field.setOpaque(false);
 		field.setEditable(false);
 		field.setFocusable(false);
@@ -98,18 +99,18 @@ public class JFCalc extends JFrame implements Display{
 	public void setDisplayText(String text) {
 		display.setText(text);
 	}
+	public void setDisplayValue(BigDecimal value) {
+		setDisplayText(format(value));
+	}
 	public Calc getCalc() {
 		return calc;
 	}
 	
 	@Override
-	public void printOperation(BigDecimal value, CalcOp calcOp) {
+	public void updateDisplay(BigDecimal value, CalcOp calcOp, BigDecimal result) {
 		signal.setText(String.valueOf(calcOp==null?"":calcOp));
 		current.setText(format(value));
-	}
-	@Override
-	public void printResult(BigDecimal value) {
-		setDisplayText(format(value));
+		setDisplayValue(result);
 	}
 	
 	private String format(BigDecimal value) {

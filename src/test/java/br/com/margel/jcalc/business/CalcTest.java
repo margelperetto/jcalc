@@ -73,8 +73,7 @@ public class CalcTest {
 		.operation(null, opMult)
 		.execute(new BigDecimal("2"));
 
-		Mockito.verify(display, Mockito.times(4)).printOperation(currentValueCaptor.capture(), opCaptor.capture());
-		Mockito.verify(display, Mockito.times(4)).printResult(resultCaptor.capture());
+		Mockito.verify(display, Mockito.times(4)).updateDisplay(currentValueCaptor.capture(), opCaptor.capture(), resultCaptor.capture());
 
 		assertEquals(opAdd, opCaptor.getAllValues().get(0));
 		assertEquals(new BigDecimal("20"), currentValueCaptor.getAllValues().get(0));
@@ -98,8 +97,7 @@ public class CalcTest {
 		CalcOp opAdd = new Add();
 		calc.operation(new BigDecimal("20"), opAdd);
 		calc.resetCalc();
-		Mockito.verify(display, Mockito.times(2)).printOperation(currentValueCaptor.capture(), opCaptor.capture());
-		Mockito.verify(display, Mockito.times(2)).printResult(resultCaptor.capture());
+		Mockito.verify(display, Mockito.times(2)).updateDisplay(currentValueCaptor.capture(), opCaptor.capture(), resultCaptor.capture());
 		
 		assertEquals(opAdd, opCaptor.getAllValues().get(0));
 		assertEquals(new BigDecimal("20"), currentValueCaptor.getAllValues().get(0));

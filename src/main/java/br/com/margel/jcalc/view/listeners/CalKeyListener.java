@@ -16,7 +16,7 @@ public class CalKeyListener extends KeyAdapter{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		String keyChar = Character.toString(e.getKeyChar()).replace("","").trim().toLowerCase();
+		String keyChar = Character.toString(e.getKeyChar()).replace("\u007F","").trim().toLowerCase();
 		String keyText = KeyEvent.getKeyText(e.getKeyCode());
 		for (BtnConfig cfg : buttons) {
 			if(cfg.readKey(keyChar.isEmpty()?keyText:keyChar)) {

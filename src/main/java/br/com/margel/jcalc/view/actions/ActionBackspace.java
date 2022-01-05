@@ -22,7 +22,7 @@ public class ActionBackspace implements BiConsumer<JFCalc, BtnConfig>{
 				frame.setDisplayText("0");
 			}
 		} else {
-			frame.printResult(new BigDecimal(text));
+			frame.setDisplayValue(new BigDecimal(text));
 		}
 	}
 

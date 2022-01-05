@@ -1,6 +1,5 @@
 package br.com.margel.jcalc.view.config;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 
@@ -8,11 +7,12 @@ import br.com.margel.jcalc.view.actions.ActionBackspace;
 import br.com.margel.jcalc.view.actions.ActionClear;
 import br.com.margel.jcalc.view.actions.ActionClearAll;
 import br.com.margel.jcalc.view.actions.ActionComma;
-import br.com.margel.jcalc.view.actions.ActionNumber;
 import br.com.margel.jcalc.view.actions.ActionEqual;
+import br.com.margel.jcalc.view.actions.ActionNumber;
 import br.com.margel.jcalc.view.actions.ActionOperation;
 import br.com.margel.jcalc.view.actions.ActionSignal;
 import br.com.margel.jcalc.view.actions.Operation;
+import br.com.margel.jcalc.view.utils.AppColors;
 import br.com.margel.jcalc.view.utils.ImageUtils;
 
 public class BtnConfigFactory {
@@ -21,7 +21,7 @@ public class BtnConfigFactory {
 		return new BtnConfig(text, new ActionNumber(), text)
 				.formatter(btn->{
 					btn.setFont(btn.getFont().deriveFont(Font.BOLD, 18f));
-					btn.setForeground(Color.BLUE);
+					btn.setForeground(AppColors.HIGHLIGHTED_TEXT_COLOR);
 				});
 	}
 	

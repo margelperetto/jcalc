@@ -16,8 +16,7 @@ public class Calc {
 			currentValue = inOperation()?applyOperation(value):value;
 		}
 		this.calcOp = calcOp;
-		displayCurrentOperation();
-		displayResult(null);
+		updateDisplay(null);
 		return this;
 	}
 
@@ -33,8 +32,7 @@ public class Calc {
 	private void resetAndShowResult(BigDecimal result) {
 		currentValue = null;
 		calcOp = null;
-		displayCurrentOperation();
-		displayResult(result);
+		updateDisplay(result);
 	}
 	
 	public void resetCalc() {
@@ -45,12 +43,8 @@ public class Calc {
 		return calcOp.apply(currentValue, value);
 	}
 
-	private void displayResult(BigDecimal result) {
-		display.printResult(result);
-	}
-	
-	private void displayCurrentOperation() {
-		display.printOperation(currentValue, calcOp);
+	private void updateDisplay(BigDecimal result) {
+		display.updateDisplay(currentValue, calcOp, result);
 	}
 
 	public boolean inOperation() {
